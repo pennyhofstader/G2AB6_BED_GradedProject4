@@ -17,6 +17,7 @@ public class UserController {
 
 	@Autowired
 	private UserRepo userRepo;
+	
 
 	public UserController(UserService userService, UserRepo userRepo) {
 		super();
