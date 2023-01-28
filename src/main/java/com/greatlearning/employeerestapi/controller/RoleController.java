@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.employeerestapi.entity.Role;
 import com.greatlearning.employeerestapi.repo.RoleRepo;
-import com.greatlearning.employeerestapi.serviceImpl.RoleService;
+import com.greatlearning.employeerestapi.service.RoleServiceInterface;
 
 @RestController
 public class RoleController {
 
 	@Autowired
-	private RoleService roleService;
+	private RoleServiceInterface roleService;
 
 	@Autowired
 	private RoleRepo roleRepo;
 
-	public RoleController(RoleService roleService, RoleRepo roleRepo) {
+	public RoleController(RoleServiceInterface roleService, RoleRepo roleRepo) {
 		super();
 		this.roleService = roleService;
 		this.roleRepo = roleRepo;

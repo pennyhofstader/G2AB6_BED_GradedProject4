@@ -11,36 +11,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.greatlearning.employeerestapi.entity.Employee;
 import com.greatlearning.employeerestapi.repo.EmployeeRepo;
+import com.greatlearning.employeerestapi.service.EmployeeService;
 
 @Service
-public class EmployeeServiceImpl {
+public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepo employeeRepo;
 
+	@Override
 	public Employee addEmployees(Employee employee) {
 		return employeeRepo.saveAndFlush(employee);
 	}
 
+	@Override
 	public List<Employee> listAllEmployees() {
 		return employeeRepo.findAll();
 	}
 
+	@Override
 	public Employee getEmployeeById(Integer id) {
 		Optional<Employee> empolyees = employeeRepo.findById(id);
 		return empolyees.get();
 	}
 
+	@Override
 	public Object deleteEmployeeById(Integer id) {
 		employeeRepo.deleteById(id);
 		return "employee deleted";
 	}
 
+	@Override
 	public List<Employee> getEmployeesSortedByName(Direction direction) {
 
 		return employeeRepo.findAll(Sort.by(direction, "firstName"));
 	}
 
+	@Override
 	public List<Employee> findByFirstName(@RequestParam("firstName") String firstName) {
 		if (firstName == null) {
 			return employeeRepo.findAll();
@@ -52,7 +59,8 @@ public class EmployeeServiceImpl {
 
 	
 	
-	 public Employee Update(Employee params, int id) {
+	 @Override
+	public Employee Update(Employee params, int id) {
 
 		 Employee employee =  employeeRepo.findById(id).get();
 		 employee.setFirstName(params.getFirstName());

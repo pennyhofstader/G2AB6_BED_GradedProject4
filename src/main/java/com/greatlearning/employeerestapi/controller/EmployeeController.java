@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.employeerestapi.entity.Employee;
-import com.greatlearning.employeerestapi.serviceImpl.EmployeeServiceImpl;
+import com.greatlearning.employeerestapi.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
 
 	@Autowired
-	private EmployeeServiceImpl employeeServiceImpl;
+	private EmployeeService employeeServiceImpl;
 
 	// working properly
 	@PostMapping("/addNewEmployee")

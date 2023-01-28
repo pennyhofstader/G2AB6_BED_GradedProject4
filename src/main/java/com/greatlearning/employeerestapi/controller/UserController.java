@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.greatlearning.employeerestapi.entity.User;
 import com.greatlearning.employeerestapi.repo.UserRepo;
-import com.greatlearning.employeerestapi.serviceImpl.UserService;
+import com.greatlearning.employeerestapi.service.UserServiceInterface;
 
 @RestController
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceInterface userService;
 
 	@Autowired
 	private UserRepo userRepo;
 	
 
-	public UserController(UserService userService, UserRepo userRepo) {
+	public UserController(UserServiceInterface userService, UserRepo userRepo) {
 		super();
 		this.userService = userService;
 		this.userRepo = userRepo;

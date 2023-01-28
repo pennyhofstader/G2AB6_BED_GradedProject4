@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.greatlearning.employeerestapi.entity.User;
 import com.greatlearning.employeerestapi.repo.RoleRepo;
 import com.greatlearning.employeerestapi.repo.UserRepo;
+import com.greatlearning.employeerestapi.service.UserServiceInterface;
 
 @Service
-public class UserService {
+public class UserService implements UserServiceInterface {
 
 	@Autowired
 	private UserRepo userRepo;
@@ -26,6 +27,7 @@ public class UserService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
+	@Override
 	public User addUser(User user) {
 
 		String encodedPassword = this.passwordEncoder.encode(user.getPassword());
