@@ -18,12 +18,14 @@ public class RoleController {
 	@Autowired
 	private RoleRepo roleRepo;
 
+	// all args constructor
 	public RoleController(RoleServiceInterface roleService, RoleRepo roleRepo) {
 		super();
 		this.roleService = roleService;
 		this.roleRepo = roleRepo;
 	}
 
+	// adding a role
 	@PostMapping("/addRole")
 	public Role addRole(@RequestBody Role role) {
 		return roleService.addRole(role);

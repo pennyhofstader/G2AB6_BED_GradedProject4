@@ -19,34 +19,40 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepo employeeRepo;
 
+	// adding new employee
 	@Override
 	public Employee addEmployees(Employee employee) {
 		return employeeRepo.saveAndFlush(employee);
 	}
 
+	// getting all employees
 	@Override
 	public List<Employee> listAllEmployees() {
 		return employeeRepo.findAll();
 	}
 
+	// get an employee by id
 	@Override
 	public Employee getEmployeeById(Integer id) {
 		Optional<Employee> empolyees = employeeRepo.findById(id);
 		return empolyees.get();
 	}
 
+	// delete employee
 	@Override
 	public Object deleteEmployeeById(Integer id) {
 		employeeRepo.deleteById(id);
 		return "employee deleted";
 	}
 
+	// sorting by name
 	@Override
 	public List<Employee> getEmployeesSortedByName(Direction direction) {
 
 		return employeeRepo.findAll(Sort.by(direction, "firstName"));
 	}
 
+	// search by first name
 	@Override
 	public List<Employee> findByFirstName(@RequestParam("firstName") String firstName) {
 		if (firstName == null) {
@@ -57,17 +63,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-	
-	
-	 @Override
+	// updating a value
+	@Override
 	public Employee Update(Employee params, int id) {
 
-		 Employee employee =  employeeRepo.findById(id).get();
-		 employee.setFirstName(params.getFirstName());
-		 employee.setLastName(params.getLastName());
-		 employee.setEmail(params.getEmail());
+		Employee employee = employeeRepo.findById(id).get();
+		employee.setFirstName(params.getFirstName());
+		employee.setLastName(params.getLastName());
+		employee.setEmail(params.getEmail());
 
-	       return employeeRepo.save(employee);
+		return employeeRepo.save(employee);
 
-	    }
+	}
 }

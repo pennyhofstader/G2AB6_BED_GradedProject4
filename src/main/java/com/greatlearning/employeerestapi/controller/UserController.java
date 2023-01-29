@@ -17,14 +17,15 @@ public class UserController {
 
 	@Autowired
 	private UserRepo userRepo;
-	
 
+	// all args constructor
 	public UserController(UserServiceInterface userService, UserRepo userRepo) {
 		super();
 		this.userService = userService;
 		this.userRepo = userRepo;
 	}
 
+	// adding a user
 	@PostMapping("/addUser")
 	public User addUser(@RequestBody User user) {
 

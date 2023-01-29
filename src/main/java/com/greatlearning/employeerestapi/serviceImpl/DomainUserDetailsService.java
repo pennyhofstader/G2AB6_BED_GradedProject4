@@ -16,6 +16,7 @@ public class DomainUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepo userRepo;
 
+	// find by username method
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return this.userRepo.findByUsername(username)

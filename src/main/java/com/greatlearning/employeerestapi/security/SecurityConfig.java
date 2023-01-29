@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+	// authorization and authentication setup
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -46,15 +48,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/addNewEmployee").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.GET, "/api/listAllEmployees").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/{id}").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.GET, "/api/searchByFirstName").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.PUT, "api/update/{id}").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.PUT, "/addRole").hasAnyRole("ADMIN","USER")
-				.antMatchers(HttpMethod.PUT, "/addUser").hasAnyRole("ADMIN","USER").anyRequest()
-				.fullyAuthenticated().and().httpBasic();
+				.antMatchers(HttpMethod.GET, "/api/listAllEmployees").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/{id}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.GET, "/api/searchByFirstName").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.PUT, "api/update/{id}").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.PUT, "/addRole").hasAnyRole("ADMIN", "USER")
+				.antMatchers(HttpMethod.PUT, "/addUser").hasAnyRole("ADMIN", "USER").anyRequest().fullyAuthenticated()
+				.and().httpBasic();
 
 	}
 

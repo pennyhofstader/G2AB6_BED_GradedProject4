@@ -16,13 +16,12 @@ public class DomainUserDetails implements UserDetails {
 		this.user = user;
 	}
 
+	// implementing user details methods
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-	 Set<GrantedAuthority> authorities =this.user.getRoles()
-		.stream()
-		.map(Role::getName)
-		.map(SimpleGrantedAuthority::new)
-		.collect(Collectors.toSet());
+		Set<GrantedAuthority> authorities = this.user.getRoles().stream().map(Role::getName)
+				.map(SimpleGrantedAuthority::new).collect(Collectors.toSet());
 		return authorities;
 	}
 

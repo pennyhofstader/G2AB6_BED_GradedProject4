@@ -30,6 +30,8 @@ public class BootstrapAppData {
 		this.passwordEncoder = passwordEncoder;
 	}
 
+	// adding demo users
+
 	@EventListener(ApplicationReadyEvent.class)
 	@Transactional
 	public void onReady(ApplicationReadyEvent event) {
@@ -42,7 +44,7 @@ public class BootstrapAppData {
 		User user2 = new User();
 		user2.setUsername("user2");
 		user2.setPassword(this.passwordEncoder.encode("users"));
-		
+
 		Role admin = new Role();
 		admin.setName("ROLE_ADMIN");
 

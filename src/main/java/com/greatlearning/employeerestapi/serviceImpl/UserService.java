@@ -27,6 +27,7 @@ public class UserService implements UserServiceInterface {
 		this.passwordEncoder = passwordEncoder;
 	}
 
+	// adding a user
 	@Override
 	public User addUser(User user) {
 

@@ -24,9 +24,13 @@ public class User {
 	private String username;
 	private String password;
 
+	// many to many relationship
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Set<Role> roles = new HashSet<>();
+
+	//// generating getters and setters
 
 	public long getId() {
 		return id;

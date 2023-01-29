@@ -19,6 +19,7 @@ public class RoleService implements RoleServiceInterface {
 		this.roleRepo = roleRepo;
 	}
 
+	// adding a role
 	@Override
 	public Role addRole(Role role) {
 		return roleRepo.save(role);

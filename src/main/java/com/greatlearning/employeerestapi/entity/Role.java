@@ -19,6 +19,8 @@ public class Role {
 	private long id;
 	private String name;
 
+	// generating getters and setters
+
 	public long getId() {
 		return id;
 	}

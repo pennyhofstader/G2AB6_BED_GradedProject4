@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "Employees")
 public class Employee {
@@ -30,6 +27,19 @@ public class Employee {
 	private String lastName;
 	@Column(name = "email")
 	private String email;
+
+	// generating getters and setters, constructors and to string
+
+	public Employee() {
+
+	}
+
+	public Employee(String firstName, String lastName, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 
 	public int getId() {
 		return id;
@@ -61,6 +71,11 @@ public class Employee {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 }

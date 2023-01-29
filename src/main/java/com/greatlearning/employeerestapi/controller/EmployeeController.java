@@ -25,7 +25,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeServiceImpl;
 
-	// working properly
+	// adding new employee
 	@PostMapping("/addNewEmployee")
 	public Employee addNewEmployee(@RequestBody Employee employee) {
 
@@ -33,38 +33,39 @@ public class EmployeeController {
 
 	}
 
-	// working properly
+	// getting all employees
 	@GetMapping("/listAllEmployees")
 	public List<Employee> listAllEmployees() {
 		return employeeServiceImpl.listAllEmployees();
 	}
 
-	// working properly
+	// get an employee by id
 	@GetMapping("/getEmployeeById/{id}")
 	public ResponseEntity<Employee> getUserById(@PathVariable("id") Integer id) {
 		Employee employee = employeeServiceImpl.getEmployeeById(id);
 		return new ResponseEntity<>(employee, HttpStatus.OK);
 	}
 
-	// working properly
+	// delete employee
 	@DeleteMapping("/deleteEmployeeById/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable("id") Integer id) {
 		employeeServiceImpl.deleteEmployeeById(id);
 		return new ResponseEntity<>("User successfully deleted!", HttpStatus.OK);
 	}
 
-	// working properly
+	// sorting by name
 	@GetMapping("/getEmployeesSortedByName")
 	public List<Employee> getEmployeesSortedByName(Direction direction) {
 		return employeeServiceImpl.getEmployeesSortedByName(direction);
 	}
 
-	// working properly
+	// search by first name
 	@GetMapping("/searchByFirstName")
 	public List<Employee> searchByFirstName(String firstName) {
 		return employeeServiceImpl.findByFirstName(firstName);
 	}
 
+	// updating a value
 	@PutMapping(value = "/update/{id}")
 	public Employee Update(@PathVariable int id, @RequestBody Employee params) {
 		return employeeServiceImpl.Update(params, id);
