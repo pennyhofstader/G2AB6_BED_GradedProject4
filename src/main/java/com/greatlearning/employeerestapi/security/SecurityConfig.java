@@ -47,16 +47,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().disable();
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/addNewEmployee").hasAnyRole("ADMIN")
-				.antMatchers(HttpMethod.GET, "/api/listAllEmployees").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/{id}").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.GET, "/api/searchByFirstName").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.PUT, "api/update/{id}").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.PUT, "/addRole").hasAnyRole("ADMIN", "USER")
-				.antMatchers(HttpMethod.PUT, "/addUser").hasAnyRole("ADMIN", "USER").anyRequest().fullyAuthenticated()
-				.and().httpBasic();
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/addNewEmployee").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/addRole").hasRole("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/addUser").hasRole("ADMIN")
+				.antMatchers(HttpMethod.GET, "/api/listAllEmployees").authenticated()
+				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/**","/api/getEmployeeById**").authenticated()
+				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName**","/api/getEmployeesSortedByName/**").authenticated()
+				.antMatchers(HttpMethod.GET, "/api/searchByFirstName**","/api/searchByFirstName/**").authenticated()
+				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}","/api/deleteEmployeeById/**").hasRole("ADMIN")
+				.antMatchers(HttpMethod.PUT, "api/update/{id}","/api/update/**").hasRole("ADMIN").anyRequest()
+				.fullyAuthenticated().and().httpBasic();
 
 	}
 

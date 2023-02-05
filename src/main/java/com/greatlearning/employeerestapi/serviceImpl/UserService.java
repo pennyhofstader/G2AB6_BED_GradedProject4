@@ -14,27 +14,14 @@ import com.greatlearning.employeerestapi.service.UserServiceInterface;
 public class UserService implements UserServiceInterface {
 
 	@Autowired
-	private UserRepo userRepo;
-	@Autowired
-	private RoleRepo roleRepo;
+	private UserRepo userRepository;
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
-	public UserService(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
-		super();
-		this.userRepo = userRepo;
-		this.roleRepo = roleRepo;
-		this.passwordEncoder = passwordEncoder;
-	}
-
-	// adding a user
 	@Override
 	public User addUser(User user) {
-
-		String encodedPassword = this.passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-		return userRepo.save(user);
-
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		return userRepository.saveAndFlush(user);
 	}
 
 }
