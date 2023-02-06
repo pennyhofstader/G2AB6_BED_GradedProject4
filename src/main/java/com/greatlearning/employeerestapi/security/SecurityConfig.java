@@ -51,11 +51,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST, "/api/addRole").hasRole("ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/addUser").hasRole("ADMIN")
 				.antMatchers(HttpMethod.GET, "/api/listAllEmployees").authenticated()
-				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/**","/api/getEmployeeById**").authenticated()
-				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName**","/api/getEmployeesSortedByName/**").authenticated()
-				.antMatchers(HttpMethod.GET, "/api/searchByFirstName**","/api/searchByFirstName/**").authenticated()
-				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}","/api/deleteEmployeeById/**").hasRole("ADMIN")
-				.antMatchers(HttpMethod.PUT, "api/update/{id}","/api/update/**").hasRole("ADMIN").anyRequest()
+				.antMatchers(HttpMethod.GET, "/api/getEmployeeById/**", "/api/getEmployeeById**").authenticated()
+				.antMatchers(HttpMethod.GET, "/api/getEmployeesSortedByName**", "/api/getEmployeesSortedByName/**")
+				.authenticated().antMatchers(HttpMethod.GET, "/api/searchByFirstName**", "/api/searchByFirstName/**")
+				.authenticated()
+				.antMatchers(HttpMethod.DELETE, "/api/deleteEmployeeById/{id}", "/api/deleteEmployeeById/**")
+				.hasRole("ADMIN").antMatchers("/api/updateEmployee").hasAnyRole("ADMIN", "USER").anyRequest()
 				.fullyAuthenticated().and().httpBasic();
 
 	}

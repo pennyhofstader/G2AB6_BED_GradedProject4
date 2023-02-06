@@ -1,4 +1,4 @@
-package com.greatlearning.employeerestapi.serviceImpl;
+package com.greatlearning.employeerestapi.security;
 
 import java.util.Optional;
 
@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.greatlearning.employeerestapi.entity.DomainUserDetails;
 import com.greatlearning.employeerestapi.entity.User;
 import com.greatlearning.employeerestapi.repo.UserRepo;
 

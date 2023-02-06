@@ -16,8 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -39,7 +37,7 @@ public class User {
 
 	public User() {
 	}
-	
+
 	public void addRole(Role role) {
 		this.roles.add(role);
 	}

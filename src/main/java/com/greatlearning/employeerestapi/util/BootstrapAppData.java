@@ -22,7 +22,7 @@ public class BootstrapAppData {
 
 	@Autowired
 	private UserRepo userRepository;
-	
+
 	@Autowired
 	private RoleRepo roleRepository;
 

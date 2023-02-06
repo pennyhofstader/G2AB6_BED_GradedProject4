@@ -20,8 +20,6 @@ public class RoleController {
 	@Autowired
 	private RoleRepo roleRepo;
 
-
-
 	@PostMapping("/addRole")
 	public Role addRole(@RequestBody Role role) {
 		return roleService.addRole(role);

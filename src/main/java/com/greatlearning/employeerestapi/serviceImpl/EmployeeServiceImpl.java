@@ -63,16 +63,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
-	// updating a value
-	@Override
-	public Employee Update(Employee params, int id) {
-
-		Employee employee = employeeRepo.findById(id).get();
-		employee.setFirstName(params.getFirstName());
-		employee.setLastName(params.getLastName());
-		employee.setEmail(params.getEmail());
-
-		return employeeRepo.save(employee);
-
-	}
 }

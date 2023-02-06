@@ -66,9 +66,9 @@ public class EmployeeController {
 	}
 
 	// updating a value
-	@PutMapping(value = "/update/{id}")
-	public Employee Update(@PathVariable int id, @RequestBody Employee params) {
-		return employeeServiceImpl.Update(params, id);
+	@PutMapping("/updateEmployee")
+	public Employee updateEmployee(@RequestBody Employee employee) {
+		return employeeServiceImpl.addEmployees(employee);
 	}
 
 }

@@ -14,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -27,9 +25,9 @@ public class Role {
 
 	@Column(name = "role")
 	private String role;
-	
+
 	@ManyToMany(mappedBy = "roles")
-	private Set<User> users=new HashSet<>();
+	private Set<User> users = new HashSet<>();
 
 	public Role() {
 	}
@@ -74,7 +72,7 @@ public class Role {
 	}
 
 	public void setRole(String role) {
-		this.role = "ROLE_"+role;
+		this.role = "ROLE_" + role;
 	}
 
 	public Integer getId() {

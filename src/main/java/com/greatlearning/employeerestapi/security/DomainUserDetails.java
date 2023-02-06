@@ -1,4 +1,4 @@
-package com.greatlearning.employeerestapi.entity;
+package com.greatlearning.employeerestapi.security;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.greatlearning.employeerestapi.entity.Role;
+import com.greatlearning.employeerestapi.entity.User;
 
 @SuppressWarnings("serial")
 public class DomainUserDetails implements UserDetails {
